@@ -1,0 +1,35 @@
+<div class="container-fluid h-100 p-0">
+  <div class="d-flex justify-content-center align-items-center h-100">
+    <div class="add-record">
+      <div class="card">
+        <div class="card-body bg-dark">
+          <h5 class="card-title text-light m-0">Add new record</h5>
+        </div>
+        <form (ngSubmit)="addRecord()" #recordForm="ngForm">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" class="form-control" placeholder="Internet" required [(ngModel)]="record.name" name="name">
+          </div>
+          <div class="form-group">
+            <label>Date</label>
+            <input type="text" class="form-control" placeholder="Today" required [(ngModel)]="record.date" name="date">
+          </div>
+          <div class="form-group">
+            <label>Period <small class="text-muted">by months</small></label>
+            <input type="number" class="form-control" placeholder="1" required [(ngModel)]="record.period" name="period">
+          </div>
+          <div class="form-group">
+            <label>Coast <small class="text-muted">by ₽</small></label>
+            <input type="number" class="form-control" placeholder="499" required [(ngModel)]="record.coast" name="coast">
+          </div>
+          <div class="form-group mt-4 mb-0">
+            <button class="btn btn-success btn-block" [disabled]="!recordForm.form.valid" type="submit">Done</button>
+          </div>
+        </form>
+      </div>
+      <div class="d-flex justify-content-between">
+        <a href="/records-list" class="btn btn-link btn-sm">All records</a>
+      </div>
+    </div>
+  </div>
+</div>
