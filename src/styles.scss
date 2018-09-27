@@ -9,6 +9,60 @@ app-counter {
   height: 100%;
 }
 
+.fg {
+  &-2 {
+    flex-grow: 2;
+  }
+}
+
+/* table sorting */
+
+th.sortable {
+  position: relative;
+  padding-right: 1rem;
+  cursor: pointer;
+
+  &:after {
+    content: '';
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    opacity: .25;
+    background: url("./assets/img/icons/sortable.png") no-repeat center;
+    background-size: 70%;
+    transform: translateY(-50%);
+  }
+
+  &.asc:after {
+    background: url("./assets/img/icons/up.png") no-repeat top;
+  }
+
+  &.desc:after {
+    background: url("./assets/img/icons/down.png") no-repeat bottom;
+  }
+
+  &.asc:after,
+  &.desc:after {
+    opacity: 1;
+    background-size: 50%;
+  }
+
+  &.align-top:after,
+  &.align-top:before {
+    top: 1rem;
+    transform: translate(50%, 0);
+  }
+}
+
+/* card decoration */
+
+.card {
+  border-color: rgb(52, 58, 64);
+}
+
 /* validation */
 
 .ng-valid[required],

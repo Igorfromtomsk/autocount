@@ -2,39 +2,46 @@
   <div class="d-flex justify-content-center align-items-center h-100">
     <div class="records-list">
       <div class="card">
-        <div class="card-body bg-dark">
-          <h4 class="card-title text-light m-0">Record's list</h4>
+        <div class="card-body bg-dark d-flex align-items-center justify-content-between">
+          <h4 class="card-title text-light m-0 text-nowrap pr-3 col pl-0">Record's list</h4>
+          <input type="text" placeholder="search" class="form-control col" (input)="search($event.target.value)">
         </div>
-        <table class="table m-0">
+        <table class="table m-0" [class.inProgress]="searchInProgress">
           <thead>
           <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Date</th>
-            <th scope="col">Period</th>
-            <th scope="col">Coast</th>
+            <th scope="col" class="align-top">#</th>
+            <th scope="col" class="sortable align-top" (click)="filter('name', $event.target)">Name</th>
+            <th scope="col" class="sortable align-top" (click)="filter('date', $event.target)">Date</th>
+            <th scope="col" class="sortable align-top" (click)="filter('period', $event.target)">Period <small class="text-nowrap">(by month)</small></th>
+            <th scope="col" class="sortable align-top" (click)="filter('coast', $event.target)">Coast</th>
             <th scope="col"></th>
           </tr>
           </thead>
           <tbody>
           <tr *ngFor="let record of records; let i = index">
-            <th class="align-middle" scope="row">{{i + 1}}</th>
+            <td class="align-middle" scope="row"><b>{{i + 1}}</b></td>
             <td class="align-middle">{{record.name}}</td>
-            <td class="align-middle">{{record.date}}</td>
+            <td class="align-middle text-nowrap"><time datetime="record.date">{{record.date | date:'shortDate'}}</time></td>
             <td class="align-middle">{{record.period}}</td>
-            <td class="align-middle">{{record.coast}}</td>
+            <td class="align-middle"><b>{{record.coast}}</b></td>
             <td class="align-middle">
-              <button class="btn btn-link text-danger btn-sm">
-                <fa-icon [icon]="faTrash" (click)="deleteRecord(record.id)"></fa-icon>
-              </button>
+              <div class=" d-flex flex-nowrap align-items-center">
+                <button class="btn btn-link text-danger btn-sm">
+                  <fa-icon [icon]="faTrash" (click)="deleteRecord(record.id)"></fa-icon>
+                </button>
+                <button class="btn btn-link text-primary btn-sm">
+                  <fa-icon [icon]="faEdit" [routerLink]="['/record', 'edit', record.id]"></fa-icon>
+                </button>
+              </div>
             </td>
           </tr>
           </tbody>
         </table>
       </div>
       <div class="d-flex justify-content-between">
-        <a href="/" class="btn btn-link btn-sm">Home</a>
-        <a href="/add-record" class="btn btn-link btn-sm">Add new record +</a>
+        <a routerLink="/" class="btn btn-link btn-sm">Home</a>
+        <a [routerLink]="['/record', 'create']" [routerLinkActive]="['/record', 'create']" class="btn btn-link btn-sm">Add
+          new record +</a>
       </div>
     </div>
   </div>

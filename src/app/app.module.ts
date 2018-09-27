@@ -3,9 +3,9 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import {RouterModule} from '@angular/router';
-import { CounterComponent } from './counter/counter.component';
-import {StaticDataSource} from './counter/model/static.dataSource';
-import {RecordsRepository} from './counter/model/records.repository';
+import { CounterComponent } from './home/counter.component';
+import {StaticDataSource} from './model/static.dataSource';
+import {RecordsRepository} from './model/records.repository';
 import { RecordsListComponent } from './records-list/records-list.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import { AddRecordComponent } from './add-record/add-record.component';
@@ -25,7 +25,8 @@ import {FormsModule} from '@angular/forms';
     RouterModule.forRoot([
       {path: '', component: CounterComponent},
       {path: 'records-list', component: RecordsListComponent},
-      {path: 'add-record', component: AddRecordComponent}
+      {path: 'record/:mode', component: AddRecordComponent},
+      {path: 'record/:mode/:id', component: AddRecordComponent}
     ])
   ],
   providers: [StaticDataSource, RecordsRepository],

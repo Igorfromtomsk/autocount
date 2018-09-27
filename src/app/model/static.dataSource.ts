@@ -7,8 +7,12 @@ import 'rxjs/add/observable/of';
 @Injectable()
 export class StaticDataSource {
   private records: Record[] = [
-    {id: 1, name: 'Minecraft', date: '21-07-2018', period: 1, coast: 479},
-    {id: 2, name: 'Tele2', date: '09-07-2018', period: 1, coast: 200},
+    {id: 0, name: 'Minecraft', date: '07-21-2018', period: 1, coast: 479},
+    {id: 1, name: 'Tele2', date: '07-09-2018', period: 1, coast: 200},
+    {id: 2, name: 'Skyeng', date: '07-01-2018', period: 1, coast: 4490},
+    {id: 3, name: 'Таблетки', date: '07-21-2018', period: 1, coast: 1290},
+    {id: 4, name: 'Spotify', date: '07-11-2018', period: 1, coast: 263},
+    {id: 5, name: 'Playstation Network', date: '07-14-2018', period: 3, coast: 1599},
   ];
 
   counstructor() {
@@ -22,16 +26,11 @@ export class StaticDataSource {
     if (!record.id) {
       record.id = Math.min.apply(null, this.records.map(item => item.id));
     }
+
     return Observable.of(this.records.push(record));
   }
 
   deleteRecord(id) {
-    return Observable.of(
-      this.records.splice(
-        this.records.indexOf(
-          this.records.filter(item => item.id === id)[0]
-        )
-      )
-    );
+    return true;
   }
 }
