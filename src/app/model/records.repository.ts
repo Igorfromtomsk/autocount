@@ -23,7 +23,7 @@ export class RecordsRepository {
 
   deleteRecord(id) {
     const index = this.getRecordIndexById(id);
-    return Observable.of(this.records.splice(index));
+    return Observable.of(this.records.splice(index, 1));
   }
 
   editRecord(record: Record) {
@@ -31,6 +31,6 @@ export class RecordsRepository {
   }
 
   getRecordById(id) {
-    return this.records.filter(item => item.id == id)[0];
+    return this.records.filter(item => item.id === id)[0];
   }
 }

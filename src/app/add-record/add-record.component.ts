@@ -11,8 +11,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class AddRecordComponent implements OnInit {
   public record: Record = {
     name: '',
-    date: '',
-    period: 0,
+    date: new Date().toLocaleString('en').split(',')[0],
+    period: 1,
     coast: 0
   };
   private editing: boolean;

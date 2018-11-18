@@ -24,11 +24,10 @@ th.sortable {
 
   &:after {
     content: '';
-    display: block;
+    display: inline-block;
     width: 1rem;
     height: 1rem;
     position: absolute;
-    right: 0;
     top: 50%;
     opacity: .25;
     background: url("./assets/img/icons/sortable.png") no-repeat center;

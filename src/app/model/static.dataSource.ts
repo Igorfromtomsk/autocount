@@ -13,6 +13,8 @@ export class StaticDataSource {
     {id: 3, name: 'Таблетки', date: '07-21-2018', period: 1, coast: 1290},
     {id: 4, name: 'Spotify', date: '07-11-2018', period: 1, coast: 263},
     {id: 5, name: 'Playstation Network', date: '07-14-2018', period: 3, coast: 1599},
+    {id: 6, name: 'Ключевая вода', date: '07-10-2018', period: 1, coast: 570},
+    {id: 7, name: 'Internet', date: '07-17-2017', period: 1, coast: 540},
   ];
 
   counstructor() {
@@ -28,9 +30,5 @@ export class StaticDataSource {
     }
 
     return Observable.of(this.records.push(record));
-  }
-
-  deleteRecord(id) {
-    return true;
   }
 }

@@ -38,7 +38,9 @@ export class RecordsListComponent implements OnInit {
 
     this.searchTimer = setTimeout(() => {
       if (!!name) {
-        this.records = this.repository.records.filter(item => item.name === name);
+        this.records = this.repository.records.filter(item => {
+          return item.name.indexOf(name) !== -1;
+        });
       } else {
         this.records = this.repository.records;
       }
