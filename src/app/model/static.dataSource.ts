@@ -20,8 +20,8 @@ export class StaticDataSource {
   counstructor() {
   }
 
-  getRecords(): Observable<Record[]> {
-    return Observable.from([this.records]);
+  getRecords() {
+    return this.records;
   }
 
   addRecord(record) {

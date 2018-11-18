@@ -8,13 +8,11 @@ export class RecordsRepository {
   public records: Record[] = [];
 
   constructor(private source: StaticDataSource) {
-    this.source.getRecords().subscribe(data => {
-      this.records = data;
-    });
+    this.records = this.source.getRecords();
   }
 
   private getRecordIndexById(id) {
-    return this.records.indexOf(this.records.filter(item => item.id == id)[0]);
+    return this.records.indexOf(this.records.filter(item => item.id === id)[0]);
   }
 
   addRecord(record: Record) {
